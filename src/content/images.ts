@@ -29,4 +29,22 @@ export const photos = {
     pexels("7551686"), pexels("11441175"), pexels("8317678"), pexels("8420399"),
     pexels("6148877"), pexels("7545186"), pexels("6975859"), pexels("39005418"),
   ],
+  // Additional, individually selected photos for long-form page sections.
+  resourceGuideSections: [
+    pexels("6972661"), pexels("11610664"), pexels("7545249"), pexels("5493926"),
+    pexels("35745260"), pexels("8376266"), pexels("8376236"), pexels("8413217"),
+    pexels("11370618"), pexels("8376157"), pexels("5214997"), pexels("3823489"),
+  ],
+  wisdomArticleSections: [
+    pexels("7544749"), pexels("8088598"), pexels("8088600"), pexels("8420394"),
+    pexels("8056988"), pexels("5790822"), pexels("7921257"), pexels("8172814"),
+    pexels("8056994"), pexels("8056990"), pexels("8441854"), pexels("8899975"),
+  ],
+  sourceSections: [
+    pexels("7530585"), pexels("7979438"), pexels("8929201"), pexels("3768131"),
+    pexels("8439661"), pexels("9870133"), pexels("6963071"), pexels("7979408"),
+  ],
+  aboutSections: pexels("7642092"),
+  librarySection: pexels("7653165"),
+  wisdomIndexSection: pexels("5710520"),
 };

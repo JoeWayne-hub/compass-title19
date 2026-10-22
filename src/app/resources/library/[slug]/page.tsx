@@ -6,5 +6,5 @@ export const generateStaticParams = () => siteCopy.resourceGuides.map((_, i) => 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
  const { slug } = await params; const index = Number(slug.replace("guide-", "")) - 1; const item = siteCopy.resourceGuides[index];
  if (!item || !/^guide-\d{2}$/.test(slug)) notFound();
- return <CopyDocumentPage document={item} eyebrow={`RESOURCE LIBRARY · GUIDE ${String(index+1).padStart(2,"0")}`} description="A complete evergreen guide from the Compass Resource Library." image={photos.resourceGuides[index]} />;
+ return <CopyDocumentPage document={item} eyebrow={`RESOURCE LIBRARY · GUIDE ${String(index+1).padStart(2,"0")}`} description="A complete evergreen guide from the Compass Resource Library." image={photos.resourceGuides[index]} supportImage={photos.resourceGuideSections[index]} />;
 }

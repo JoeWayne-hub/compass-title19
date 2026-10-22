@@ -19,6 +19,6 @@ export default function AboutPage() {
       <Image src="/images/akua-portrait.jpg" alt="Akua Achiaa Okyere, Founder and CEO of Compass" width={620} height={775} className="profile-image" />
       <SourceBlocks blocks={about.blocks.slice(founderStart, founderEnd)} />
     </div></section>
-    <section className="source-copy-section"><div className="wrap"><SourceBlocks blocks={about.blocks.slice(founderEnd)} /></div></section>
+    <section className="source-copy-section"><div className="wrap"><SourceBlocks blocks={about.blocks.slice(founderEnd)} supportImage={photos.aboutSections} photoAlt="A daughter spending time with her older mother at home" /></div></section>
   </>;
 }

@@ -13,7 +13,7 @@ function anchor(text: string) {
   return text.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
-export function SourceBlocks({ blocks, tables = [] }: { blocks: CopyBlock[]; tables?: string[][][] }) {
+export function SourceBlocks({ blocks, tables = [], supportImage, photoAlt = "Family and caregiving support" }: { blocks: CopyBlock[]; tables?: string[][][]; supportImage?: string; photoAlt?: string }) {
   const rendered: ReactNode[] = [];
   blocks.forEach((block, index) => {
       const key = `${index}-${block.text.slice(0, 24)}`;
@@ -23,6 +23,7 @@ export function SourceBlocks({ blocks, tables = [] }: { blocks: CopyBlock[]; tab
       else if (block.kind === "li") rendered.push(<ul key={key}><li>{block.text}</li></ul>);
       else if (block.kind === "cta") rendered.push(<p className="source-cta" key={key}><Link className="button button-orange" href="/contact">{block.text} <span aria-hidden="true">↗</span></Link></p>);
       else rendered.push(<p key={key}>{block.text}</p>);
+      if (supportImage && index === Math.floor(blocks.length * 0.52)) rendered.push(<figure className="source-photo-break" key={`photo-${index}`}><img src={supportImage} alt={photoAlt} loading="lazy" /></figure>);
   });
   return <div className="source-copy">
     {rendered}
@@ -30,14 +31,14 @@ export function SourceBlocks({ blocks, tables = [] }: { blocks: CopyBlock[]; tab
   </div>;
 }
 
-export function SourcePage({ copyKey, eyebrow, description, image }: { copyKey: CopyKey; eyebrow: string; description: string; image?: string }) {
+export function SourcePage({ copyKey, eyebrow, description, image, supportImage }: { copyKey: CopyKey; eyebrow: string; description: string; image?: string; supportImage?: string }) {
   const document = siteCopy[copyKey] as CopyDocument;
   if (!document) notFound();
-  return <><PageHero eyebrow={eyebrow} title={document.title} description={description} image={image} /><section className="source-copy-section"><div className="wrap"><SourceBlocks blocks={document.blocks} tables={document.tables} /></div></section></>;
+  return <><PageHero eyebrow={eyebrow} title={document.title} description={description} image={image} /><section className="source-copy-section"><div className="wrap"><SourceBlocks blocks={document.blocks} tables={document.tables} supportImage={supportImage} photoAlt={`${document.title} supporting photo`} /></div></section></>;
 }
 
-export function CopyDocumentPage({ document, eyebrow, description, image }: { document: CopyDocument; eyebrow: string; description: string; image?: string }) {
-  return <><PageHero eyebrow={eyebrow} title={document.title} description={description} image={image} /><section className="source-copy-section"><div className="wrap"><SourceBlocks blocks={document.blocks} tables={document.tables} /></div></section></>;
+export function CopyDocumentPage({ document, eyebrow, description, image, supportImage }: { document: CopyDocument; eyebrow: string; description: string; image?: string; supportImage?: string }) {
+  return <><PageHero eyebrow={eyebrow} title={document.title} description={description} image={image} /><section className="source-copy-section"><div className="wrap"><SourceBlocks blocks={document.blocks} tables={document.tables} supportImage={supportImage} photoAlt={`${document.title} supporting photo`} /></div></section></>;
 }
 
 export default siteCopy;
